@@ -10,7 +10,7 @@ const StyledPlayer = styled.div`
     max-height: 863px;
     transition: all .5s ease;
 
-    @media screen and (max-width: 1400px) {
+    @media screen and (max-width: 1200px) {
       display: block;
       max-height: 10000px;
     }
