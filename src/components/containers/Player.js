@@ -37,7 +37,7 @@ const Player = ({match, history, location}) => {
   })
 
   useEffect(() => {
-    const videoId = match.params.activeVideo;
+    const videoId = match.params.currentVideo;
     if (videoId !== undefined) {
       const newActiveVideo = state.videos.findIndex(
         video => video.id === videoId
@@ -53,7 +53,7 @@ const Player = ({match, history, location}) => {
         autoplay: false
       })
     }
-  }, [history, location.autoplay, match.params.activeVideo, state.activeVideo.id, state.videos])
+  }, [history, location.autoplay, match.params.activeVideo, match.params.currentVideo, state.activeVideo.id, state.videos])
 
   const nightModeCallback = () => {}
 
