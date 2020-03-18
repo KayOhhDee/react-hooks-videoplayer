@@ -25,12 +25,31 @@ const themeLight = {
 }
 
 const Player = () => {
+  const nightModeCallback = () => {}
+
+  const endCallback = () => {}
+
+  const progressCallback = () => {}
+
   return (
     <ThemeProvider theme={state.nightMode ? theme : themeLight}>
-      <StyledPlayer>
-        <Video />
-        <Playlist />
-      </StyledPlayer>
+      {state.videos !== null ? (
+          <StyledPlayer>
+            <Video 
+              active={state.activeVideo}
+              autoplay={state.autoplay}
+              endCallback={endCallback}
+              progressCallback={progressCallback}
+            />
+            <Playlist 
+              videos={state.videos}
+              active={state.activeVideo}
+              nightModeCallback={nightModeCallback}
+              nightMode={state.nightMode}
+            />
+          </StyledPlayer>
+        ) : null
+      }
     </ThemeProvider>
   );
 }
