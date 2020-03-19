@@ -62,7 +62,19 @@ const Player = ({match, history, location}) => {
     }))
   }
 
-  const endCallback = () => {}
+  const endCallback = () => {
+    const videoId = match.params.currentVideo;
+    const currentVideoIndex = state.videos.findIndex(
+      video => video.id === videoId
+    )
+
+    const nextVideo = currentVideoIndex === state.videos.length - 1 ? 0 : currentVideoIndex + 1;
+
+    history.push({
+      pathname: `/${state.videos[nextVideo].id}`,
+      autoplay: false
+    })
+  }
 
   const progressCallback = () => {}
 
