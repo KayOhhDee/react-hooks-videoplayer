@@ -55,7 +55,12 @@ const Player = ({match, history, location}) => {
     }
   }, [history, location.autoplay, match.params.activeVideo, match.params.currentVideo, state.activeVideo.id, state.videos])
 
-  const nightModeCallback = () => {}
+  const nightModeCallback = () => {
+    setState(prevState => ({
+      ...prevState,
+      nightMode: !prevState.nightMode
+    }))
+  }
 
   const endCallback = () => {}
 
