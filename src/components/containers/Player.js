@@ -76,7 +76,16 @@ const Player = ({match, history, location}) => {
     })
   }
 
-  const progressCallback = () => {}
+  const progressCallback = e => {
+    if(e.playedSeconds > 10  && e.playedSeconds < 11) {
+      setState(prevState => ({
+        ...prevState,
+        videos: state.videos.map(video => {
+          return video.id === state.activeVideo.id ? {...video, played: true} : video;
+        })
+      }))
+    }
+  }
 
   return (
     <ThemeProvider theme={state.nightMode ? theme : themeLight}>
