@@ -34,7 +34,7 @@ const Player = ({match, history, location}) => {
     activeVideo: savedState ? savedState.activeVideo : videos.playlist[0],
     nightMode: savedState ? savedState.nightMode : true,
     playlistId: savedState ? savedState.playlistId : videos.playlistId,
-    autoplay: savedState ? savedState.autoplay : false
+    autoplay: false
   })
 
   useEffect(() => {
@@ -47,9 +47,9 @@ const Player = ({match, history, location}) => {
       const newActiveVideo = state.videos.findIndex(
         video => video.id === videoId
       )
-      setState(prev => ({
-        ...prev,
-        activeVideo: prev.videos[newActiveVideo],
+      setState(prevState => ({
+        ...prevState,
+        activeVideo: prevState.videos[newActiveVideo] || prevState.activeVideo,
         autoplay: location.autoplay
       }))
     } else {
